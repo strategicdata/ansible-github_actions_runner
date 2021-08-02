@@ -5,19 +5,19 @@
     - uninstall
 
 - include_tasks: collect_info_org.yml
-  when: runner_type == "org"
+  when: runner_type == "organization"
   tags:
     - install
     - uninstall
 
 - include_tasks: collect_info_ent.yml
-  when: runner_type == "ent"
+  when: runner_type == "enterprise"
   tags:
     - install
     - uninstall
 
 - include_tasks: collect_info_repo.yml
-  when: runner_type == "repo"
+  when: runner_type == "repository"
   tags:
     - install
     - uninstall
