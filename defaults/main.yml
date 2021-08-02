@@ -29,8 +29,8 @@ github_api_url: "https://api.github.com"
 # Personal Access Token for your GitHub account
 access_token: "{{ lookup('env', 'PERSONAL_ACCESS_TOKEN') }}"
 
-# Is it the runner for organization or not?
-runner_org: no
+# Is it the runner for a "repo", an "org" organization or an "ent" enterprise?
+runner_type: "repo"
 
 # Name to assign to this runner in GitHub (System hostname as default)
 runner_name: "{{ ansible_hostname }}"
