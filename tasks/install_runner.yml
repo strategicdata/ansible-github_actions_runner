@@ -107,7 +107,7 @@
     - install
 
 - name: Register runner (if new installation) for enterprise
-  command: "{{ runner_dir }}/./config.sh --url {{ github_url }}/enterprises/{{ github_ent | default(github_account) }} \
+  command: "{{ runner_dir }}/./config.sh --url {{ github_url }}/enterprises/{{ github_enterprise | default(github_account) }} \
             --token {{ registration.json.token }} --name {{ runner_name }} --labels {{ runner_labels | join(',') }} --unattended"
   args:
     chdir: "{{ runner_dir }}"
@@ -151,7 +151,7 @@
     - install
 
 - name: Replace registered runner for enterprise
-  command: "{{ runner_dir }}/config.sh --url {{ github_url }}/enterprises/{{ github_ent | default(github_account) }} \
+  command: "{{ runner_dir }}/config.sh --url {{ github_url }}/enterprises/{{ github_enterprise | default(github_account) }} \
             --token {{ registration.json.token }} --name {{ runner_name }} --labels {{ runner_labels | join(',') }} --unattended --replace"
   args:
     chdir: "{{ runner_dir }}"
