@@ -88,7 +88,7 @@
   no_log: "{{ hide_sensitive_logs | bool }}"
   when:
    - runner_name not in registered_runners.json.runners|map(attribute='name')|list 
-   - runner_type == "repository"
+   - effective_runner_type == "repository"
   tags:
     - install
 
@@ -102,7 +102,7 @@
   no_log: "{{ hide_sensitive_logs | bool }}"
   when:
     - runner_name not in registered_runners.json.runners|map(attribute='name')|list
-    - runner_type == "organization"
+    - effective_runner_type == "organization"
   tags:
     - install
 
@@ -116,7 +116,7 @@
   no_log: "{{ hide_sensitive_logs | bool }}"
   when:
     - runner_name not in registered_runners.json.runners|map(attribute='name')|list
-    - runner_type == "enterprise"
+    - effective_runner_type == "enterprise"
   tags:
     - install
 
@@ -131,7 +131,7 @@
   when:
     - runner_name in registered_runners.json.runners|map(attribute='name')|list
     - reinstall_runner
-    - runner_type == "repository"
+    - effective_runner_type == "repository"
   tags:
     - install
 
@@ -146,7 +146,7 @@
   when:
     - runner_name in registered_runners.json.runners|map(attribute='name')|list
     - reinstall_runner
-    - runner_type == "organization"
+    - effective_runner_type == "organization"
   tags:
     - install
 
@@ -161,7 +161,7 @@
   when:
     - runner_name in registered_runners.json.runners|map(attribute='name')|list
     - reinstall_runner
-    - runner_type == "enterprise"
+    - effective_runner_type == "enterprise"
   tags:
     - install
 
