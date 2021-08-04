@@ -2,21 +2,11 @@
 - name: Check variables (RUN ONCE)
   assert:
     that:
+      - github_account is defined
       - access_token is defined
       - access_token | length > 0
     fail_msg: "access_token was not found."
   run_once: yes
-  tags:
-    - install
-    - uninstall
-
-- name: Check github_account is defined (RUN ONCE)
-  assert:
-    that:
-      - github_account is defined
-    fail_msg: "github account not defined"
-  run_once: yes
-  when: (runner_type != "enterprise")
   tags:
     - install
     - uninstall
