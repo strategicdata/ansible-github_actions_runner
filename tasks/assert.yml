@@ -10,3 +10,23 @@
   tags:
     - install
     - uninstall
+
+- name: Check that runner_org and runner_type are not both defined simultaneously
+  assert:
+    that:
+      - not (runner_org is defined and runner_type is defined)
+    fail_msg: "Setting both runner_org and runner_type can be ambigous, please set one or the other"
+  run_once: yes
+  tags:
+    - install
+    - uninstall
+
+- name: Check that runner_type has a valid value
+  assert:
+    that:
+      - runner_type is in ["repository", "organization", "enterprise"]
+  when: runner_type is defined
+  run_once: yes
+  tags:
+    - install
+    - uninstall
