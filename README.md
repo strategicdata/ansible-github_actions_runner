@@ -83,6 +83,9 @@ runner_org: no
 # Name to assign to this runner in GitHub (System hostname as default)
 runner_name: "{{ ansible_hostname }}"
 
+# Runner group to control which runners will be used (applies to enterprise instances only)
+runner_group: "Build"
+
 # Labels to apply to the runner
 runner_labels: []
 
